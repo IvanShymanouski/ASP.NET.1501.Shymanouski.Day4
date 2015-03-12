@@ -19,6 +19,7 @@ namespace ShopModel
                     new Product {Name = "Product 2", Category = "C2", Description = "no", ProductID = 2, Price = 200}
                 };
 
+            Console.WriteLine("Total price = {0}$", cart.CalculateProductTotal());
             Console.WriteLine("Total price = {0}$", cart.CalculateProductTotal(10));
         }
     }
