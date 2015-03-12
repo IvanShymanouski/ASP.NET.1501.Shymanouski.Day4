@@ -22,7 +22,7 @@ namespace ClassMatrixSortTask2.Tests
                 matrix[i] = new int[ySize];
                 for (int j = 0; j < ySize; j++)
                 {
-                    matrix[i][j] = random.Next(-1000, 0);
+                    matrix[i][j] = random.Next(-1000, 1000);
                 }
             }
             int[][] matrix1 = (Int32[][])matrix.Clone();
@@ -58,7 +58,7 @@ namespace ClassMatrixSortTask2.Tests
                 matrix[i] = new int[ySize];
                 for (int j = 0; j < ySize; j++)
                 {
-                    matrix[i][j] = random.Next(-1000, 0);
+                    matrix[i][j] = random.Next(-1000, 1000);
                 }
             }
             int[][] matrix1 = (Int32[][])matrix.Clone();
