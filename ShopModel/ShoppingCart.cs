@@ -17,9 +17,9 @@ namespace ShopModel
             this.valueCalc = valueCalc;
         }
 
-        public decimal CalculateProductTotal()
+        public decimal CalculateProductTotal(int discount)
         {
-            return valueCalc.ValueProducts(Products);
+            return valueCalc.ValueProducts(Products,discount);
         }
     }
 }
