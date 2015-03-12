@@ -8,53 +8,49 @@ namespace ClassMatrixSortTask2
 {
     public class MatrixSort
     {
-
         /// <summary>
         /// Sort strings of matrix by custom function and custom selector
         /// </summary>
         /// <param name="array"></param>
-        /// <param name="selector">for example: i => i.Max() </param>
-        /// <param name="compare">set the rule of following for near lines
-        ///                       for exemple: (i, j) => { return i > j; }
-        ///                       it's for sorting according to decrease</param>
-        /// <returns>new sort array</returns>
-        public static void Sort(int[][] array, Func<int[],int>selector, Func<int,int,bool>compare)
+        /// <param name="comparer">
+        ///  set the rule of following for near lines
+        ///  <example>for exemple: (i, j) => i.Max() > j.Max()</example>
+        /// </param>
+        public static void Sort(int[][] array, Func<int[], int[], bool> comparer)
         {
             int[] index;
 
             //Initialization
-            int[] arrayOfKeys=new int[array.Length];
             index = new int[array.Length];
             for (int i = 0; i < array.Length; i++)
             {
-                arrayOfKeys[i] = selector(array[i]);
                 index[i] = i;
             }
 
-            Qsort(arrayOfKeys, 0, array.Length - 1, selector, compare, index);
+            Qsort(array, 0, array.Length - 1, comparer, index);
 
-            RearrangementOfArrayByIndex(array,index);
+            RearrangementOfArrayByIndex(array, index);
         }
 
-        private static void Qsort(int[] array, int left, int right, Func<int[], int> selector, Func<int, int, bool> compare,int[] index)
+        private static void Qsort(int[][] array, int left, int right, Func<int[], int[], bool> comparer, int[] index)
         {
             int i = left;
             int j = right;
-            int medium = array[index[(left + right) / 2]];
+            int[] medium = array[index[(left + right) / 2]];
 
             while (i <= j)
             {
-                while (compare(array[index[i]],medium)) i++;
-                while (compare(medium,array[index[j]])) j--;
+                while (comparer(array[index[i]], medium)) i++;
+                while (comparer(medium, array[index[j]])) j--;
                 if (i <= j)
                 {
-                    Swap(ref index[i],ref index[j]);
+                    Swap(ref index[i], ref index[j]);
                     i++; j--;
                 }
             }
 
-            if (left < j) Qsort(array, left, j, selector, compare,index);
-            if (i < right) Qsort(array, i, right, selector, compare,index);
+            if (left < j) Qsort(array, left, j, comparer, index);
+            if (i < right) Qsort(array, i, right, comparer, index);
 
         }
 
