@@ -12,6 +12,7 @@ namespace ShopModel
         public override void Load()
         {
             Bind<IValueCalculator>().To<ValueCalculator>();
+            Bind<IDiscountCalculator>().To<DiscountCalculator>();
             Bind<ShoppingCart>().ToSelf();
         }
     }

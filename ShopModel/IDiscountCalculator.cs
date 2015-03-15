@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ShopModel
 {
-    public interface IValueCalculator
+    public interface IDiscountCalculator
     {
-        decimal ValueProducts(IEnumerable<Product> products, int discount=0);
+        decimal DiscountProducts(IEnumerable<Product> products, decimal Sum, int  discount=0);
     }
 }

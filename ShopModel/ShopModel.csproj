@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigModule.cs" />
+    <Compile Include="DiscountCalculator.cs" />
+    <Compile Include="IDiscountCalculator.cs" />
     <Compile Include="IValueCalculator.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
